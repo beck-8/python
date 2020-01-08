@@ -1,1 +1,1 @@
-# python练习脚本
+# Python练习脚本
