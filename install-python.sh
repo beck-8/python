@@ -24,11 +24,11 @@ tar xf Python-3.8.1.tar.xz -C /opt/
 cd /opt/Python-3.8.1/
 sed -i '164s/^#//' Modules/Setup
 sed -i '210,213s/^#//' Modules/Setup
-./congigure --enable-shared &>/dev/null
+./configure --enable-shared &>/dev/null
 make -j $(lscpu |awk 'NR==4{print $2}') &>/dev/null
 make install &>/dev/null
 echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib" >/etc/profile.d/python3_lib.sh
 echo "/usr/local/lib" >/etc/ld.so.conf.d/python3.conf
 source /etc/profile
-ldcondig
+ldconfig
 printf "\e[1;32m Install python is completed! \e[0m\n"
