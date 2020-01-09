@@ -29,6 +29,7 @@ make -j $(lscpu |awk 'NR==4{print $2}') &>/dev/null
 make install &>/dev/null
 echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib" >/etc/profile.d/python3_lib.sh
 echo "/usr/local/lib" >/etc/ld.so.conf.d/python3.conf
-source /etc/profile
+# 脚本运行时是一个子shell,所以脚本中直接source环境变量无效，运行脚本时直接使用source install-python.sh即可解决
+# source /etc/profile
 ldconfig
 printf "\e[1;32m Install python is completed! \e[0m\n"
